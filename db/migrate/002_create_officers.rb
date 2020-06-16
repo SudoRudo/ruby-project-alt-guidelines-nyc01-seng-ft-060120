@@ -3,7 +3,7 @@ class CreateOfficers < ActiveRecord::Migration[5.2]
         create_table :officers do |t|
             t.string :name 
             t.integer :badge_number
-            t.integer :police_department_id
+            t.integer :precinct_id
         end 
     end 
 end 
