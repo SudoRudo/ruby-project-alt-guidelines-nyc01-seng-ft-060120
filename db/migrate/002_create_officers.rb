@@ -1,6 +1,6 @@
-class CreatePoliceOfficers < ActiveRecord::Migration[5.2]
+class CreateOfficers < ActiveRecord::Migration[5.2]
     def change 
-        create_table :police_officers do |t|
+        create_table :officers do |t|
             t.string :name 
             t.integer :badge_number
             t.integer :police_department_id
