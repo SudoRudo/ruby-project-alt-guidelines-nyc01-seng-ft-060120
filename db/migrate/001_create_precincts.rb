@@ -1,4 +1,4 @@
-class CreatePrecincts < ActiveRecord::Migrations[5.2]
+class CreatePrecincts < ActiveRecord::Migrations[4.2]
     def change 
         create_table :precincts do |t|
             t.string :precinct_name 

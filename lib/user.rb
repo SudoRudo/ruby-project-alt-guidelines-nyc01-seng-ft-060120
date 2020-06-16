@@ -8,5 +8,9 @@ class User < ActiveRecord::Base
         Report.create(title: title, date: date, officer_id: officer.id, user_id: self.id, report: report)
     end
 
+    def find_report(id)
+        Report.find(id)
+    end
+
     
 end
