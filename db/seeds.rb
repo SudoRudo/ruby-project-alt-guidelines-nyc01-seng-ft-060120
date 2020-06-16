@@ -13,10 +13,10 @@ Precinct.create(
     location: "2121 Eastchester Rd, The Bronx, NY 10461"
     )
 
-Officer.create(name: "Aaron Delano", badge_number: 456000)
-Officer.create(name: "Matthew Abad", badge_number: 476000)
-Officer.create(name: "Erika Accero", badge_number: 458000)
-Officer.create(name: "Thomas Adams", badge_number: 430300)
+Officer.create(name: "Aaron Delano", badge_number: 456000, precinct_id: 1)
+Officer.create(name: "Matthew Abad", badge_number: 476000, precinct_id: 1)
+Officer.create(name: "Erika Accero", badge_number: 458000, precinct_id: 2)
+Officer.create(name: "Thomas Adams", badge_number: 430300, precinct_id: 3)
 
 
 
