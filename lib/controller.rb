@@ -6,9 +6,8 @@ class Controller
     end
     def main_menu
         system "clear"
-        self.user.reload
         prompt.select("Welcome") do |menu|
-            menu.choice "File or Edit a Report", -> { User.new_or_edit }
+            menu.choice "File or Edit a Report", -> { new_or_edit }
             menu.choice "Find information on an Officer", -> {  }
             menu.choice "Find statistics on a precinct", -> {  }
             menu.choice "Resources on Police Misconduct", -> {  }
