@@ -4,17 +4,22 @@ class Controller
     def initialize()
       @prompt = TTY::Prompt.new
     end
+    def main_menu
+        system "clear"
+        self.user.reload
+        prompt.select("Welcome") do |menu|
+            menu.choice "File or Edit a Report", -> { User.new_or_edit }
+            menu.choice "Find information on an Officer", -> {  }
+            menu.choice "Find statistics on a precinct", -> {  }
+            menu.choice "Resources on Police Misconduct", -> {  }
+        end
+    end
 
-    prompt.select("Welcome") do |menu|
-        menu.choice "File or Edit a Report", -> { prompt.select("Got it, which would you like to do?") }
-        menu.choice "Find information on an Officer", -> {  }
-        menu.choice "Find statistics on a precinct", -> {  }
-        menu.choice "Resources on Police Misconduct", -> {  }
-    end 
-
-    prompt.select("Got it, which would you like to do?") do |menu|
-        menu.choice "File a new report", -> { User.new_report }
-        menu.choice "Edit a past report", -> { User.edit_report }
+    def new_or_edit
+        prompt.select("Got it, which would you like to do?") do |menu|
+            menu.choice "File a new report", -> { User.new_report }
+            menu.choice "Edit a past report", -> { User.edit_report }
+        end
     end
     
 
