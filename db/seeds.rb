@@ -1,22 +1,22 @@
 
 
-52 = Precinct.create(
-    name: “52nd Police precinct” , 
-    location:  “3016 Webster Ave, The Bronx, NY 10467”
+Precinct.create(
+    name: "52nd Police precinct" , 
+    location:  "3016 Webster Ave, The Bronx, NY 10467"
     )
-50 = Precinct.create(
-    name: “50th Police precinct” , 
-    location: “3450 Kingsbridge Ave, The Bronx, NY 10463“
+Precinct.create(
+    name: "50th Police precinct" , 
+    location: "3450 Kingsbridge Ave, The Bronx, NY 10463"
     )
-49 = Precinct.create(
-    name: “49th Police precinct” , 
-    location: “2121 Eastchester Rd, The Bronx, NY 10461”
+Precinct.create(
+    name: "49th Police precinct" , 
+    location: "2121 Eastchester Rd, The Bronx, NY 10461"
     )
 
-Officer.create(name: "Aaron Delano", badge_number: 456000, precinct_id:)
-Officer.create(name: "Matthew Abad", badge_number: 476000, precinct_id:)
-Officer.create(name: "Erika Accero", badge_number: 458000, precinct_id:)
-Officer.create(name: "Thomas Adams", badge_number: 430300, precinct_id:)
+Officer.create(name: "Aaron Delano", badge_number: 456000)
+Officer.create(name: "Matthew Abad", badge_number: 476000)
+Officer.create(name: "Erika Accero", badge_number: 458000)
+Officer.create(name: "Thomas Adams", badge_number: 430300)
 
 
 
