@@ -7,7 +7,7 @@ class Controller
     def main_menu
         system "clear"
         prompt.select("Welcome") do |menu|
-            menu.choice "File or Edit a Report", -> { new_or_edit }
+            menu.choice "File or Edit a Report", -> { self.new_or_edit }
             menu.choice "Find information on an Officer", -> {  }
             menu.choice "Find statistics on a precinct", -> {  }
             menu.choice "Resources on Police Misconduct", -> {  }
@@ -16,8 +16,8 @@ class Controller
 
     def new_or_edit
         prompt.select("Got it, which would you like to do?") do |menu|
-            menu.choice "File a new report", -> { User.new_report }
-            menu.choice "Edit a past report", -> { User.edit_report }
+            menu.choice "File a new report", -> { self.new_report }
+            menu.choice "Edit a past report", -> { self.edit_report }
         end
     end
     
@@ -33,7 +33,7 @@ class Controller
         report = gets.chomp
 
 
-        report_instance = self.create_report(title, date, officer_name, report)
+        report_instance = self.user.create_report(title, date, officer_name, report)
 
         puts "Thank you, your report has been submitted. The submission ID is #{report_instance.id}." 
         prompt.select("If you need more information on police misconduct and accountability please check out our resources below.") do |menu|
