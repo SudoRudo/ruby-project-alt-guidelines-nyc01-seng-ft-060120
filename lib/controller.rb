@@ -1,9 +1,12 @@
 class Controller
     attr_accessor :user, :prompt
 
+    @current_user = nil
+
     def initialize()
       @prompt = TTY::Prompt.new
     end
+
     def main_menu
         system "clear"
         Logo.logo
@@ -12,19 +15,22 @@ class Controller
         puts "Please enter your name" 
         puts "(If you'd like to stay anonymous press return)"
 
-        name = gets.chomp
-        if name.length > 0 
-            self.user.name = "#{name}"
+        entry = gets.chomp
+
+        if entry != ""
+            name = entry
         else
-            self.user.name = "Anonymous"
+            name = "Anonymous"
         end
+
+        @current_user = User.create(name: name)
 
         self.welcome
     end
 
     def welcome
         puts " "
-        prompt.select("Welcome #{self.user.name}") do |menu|
+        prompt.select("Welcome #{@current_user.name}") do |menu|
             menu.choice "File or Edit a Report", -> { self.new_or_edit }
             menu.choice "See your past submissions", -> { self.past_submissions }
             menu.choice "Find information on an Officer", -> { self.find_officer }
@@ -98,7 +104,7 @@ class Controller
     end
 
     def past_submissions
-        self.user.find_past_reports
+        @current_user.find_past_reports
         self.welcome
     end
 
@@ -110,26 +116,31 @@ class Controller
     end 
 
     def officer_by_badge 
-        puts "Officer's badge number"
+        puts " "
+        puts "Enter officer's badge number"
         badge_num = gets.chomp 
 
         of = Officer.find_by(badge_number: badge_num)
+
         of_reports = Report.all.each do |report|
             report.officer == of  
         end 
-
+        
+        puts "These are the user reports relating to officer #{of.name}"
         of_reports.each do |report|
+            puts " "
             puts "#{report.report} by #{report.user.name} on #{report.date}"
+            puts "____________________________________________________"
         end 
         
 
     end 
 
     def officer_by_name
-        puts "Please fill out what you can."
-        puts "Officer's first name"
+        puts " "
+        puts "Enter officer's first name"
         first_name = gets.chomp 
-        puts "Officer's last name"
+        puts "Enter officer's last name"
         last_name = gets.chomp 
         
         name = "#{first_name} #{last_name}"
@@ -140,8 +151,13 @@ class Controller
             report.officer == of  
         end 
 
+        puts " "
+        puts " "
+        puts "These are the user reports relating to officer #{of.name}"
         of_reports.each do |report|
+            puts " "
             puts "#{report.report} by #{report.user.name} on #{report.date}"
+            puts "____________________________________________________"
         end 
         
     end 

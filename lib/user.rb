@@ -17,6 +17,12 @@ class User < ActiveRecord::Base
             report.user == self.name
         end
 
+        # i = 0
+
+        # while i < Report.all.length do
+        #     if Report.all[i][:user].name == current_user.name
+        # end
+
         puts "These are all the reports associated with this user"
         puts " "
         submissions.each do |submission|
