@@ -27,7 +27,7 @@ class Controller
         prompt.select("Welcome #{self.user.name}") do |menu|
             menu.choice "File or Edit a Report", -> { self.new_or_edit }
             menu.choice "See your past submissions", -> { self.past_submissions }
-            menu.choice "Find information on an Officer", -> {  }
+            menu.choice "Find information on an Officer", -> { self.find_officer }
             menu.choice "Find information on a Precinct", -> {  }
             menu.choice "Resources on Police Misconduct", -> { Resources.links }
         end
@@ -102,7 +102,49 @@ class Controller
         self.welcome
     end
 
+    def find_officer 
+        prompt.select "How would you like to find the officer?" do |menu|
+            menu.choice "by name", -> {self.officer_by_name} 
+            menu.choice "by badge", -> {self.officer_by_badge}
+        end 
+    end 
 
+    def officer_by_badge 
+        puts "Officer's badge number"
+        badge_num = gets.chomp 
+
+        of = Officer.find_by(badge_number: badge_num)
+        of_reports = Report.all.each do |report|
+            report.officer == of  
+        end 
+
+        of_reports.each do |report|
+            puts "#{report.report} by #{report.user.name} on #{report.date}"
+        end 
+        
+
+    end 
+
+    def officer_by_name
+        puts "Please fill out what you can."
+        puts "Officer's first name"
+        first_name = gets.chomp 
+        puts "Officer's last name"
+        last_name = gets.chomp 
+        
+        name = "#{first_name} #{last_name}"
+
+        of = Officer.find_by(name: name)
+
+        of_reports = Report.all.each do |report|
+            report.officer == of  
+        end 
+
+        of_reports.each do |report|
+            puts "#{report.report} by #{report.user.name} on #{report.date}"
+        end 
+        
+    end 
 
 
 end
