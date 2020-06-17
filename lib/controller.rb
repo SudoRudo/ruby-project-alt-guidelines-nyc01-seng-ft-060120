@@ -34,7 +34,7 @@ class Controller
             menu.choice "File or Edit a Report", -> { self.new_or_edit }
             menu.choice "See your past submissions", -> { self.past_submissions }
             menu.choice "Find information on an Officer", -> { self.find_officer }
-            menu.choice "Find information on a Precinct", -> {  }
+            menu.choice "Find information on a Precinct", -> { self.find_precinct }
             menu.choice "Resources on Police Misconduct", -> { Resources.links }
         end
     end
@@ -165,6 +165,23 @@ class Controller
         puts " "
         puts " "
         
+    end 
+    def find_precinct 
+        puts " "
+        puts "What is the Police Precinct you are looking for?"
+        puts "Enter the number and ending:: Example '52nd', '1st' etc." 
+        num = gets.chomp
+
+        p_num = num + " Police precinct"
+
+        pf = Precinct.find_by(name: p_num )
+
+        puts " "
+        puts " "
+        puts "Here is the information for #{pf}"
+        puts " "
+        puts "#{pf.name} located in #{pf.location}"
+        puts "____________________________________________________"     
     end 
 
 
