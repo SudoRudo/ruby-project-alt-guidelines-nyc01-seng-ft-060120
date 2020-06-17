@@ -122,8 +122,11 @@ class Controller
 
         of = Officer.find_by(badge_number: badge_num)
 
-        of_reports = Report.all.each do |report|
-            report.officer == of  
+        of_reports = []
+        Report.all.each do |report|
+            if report.officer == of  
+                of_reports << report
+            end
         end 
         
         puts "These are the user reports relating to officer #{of.name}"
@@ -132,23 +135,23 @@ class Controller
             puts "#{report.report} by #{report.user.name} on #{report.date}"
             puts "____________________________________________________"
         end 
+        puts " "
+        puts " "
         
-
     end 
 
     def officer_by_name
         puts " "
-        puts "Enter officer's first name"
-        first_name = gets.chomp 
-        puts "Enter officer's last name"
-        last_name = gets.chomp 
-        
-        name = "#{first_name} #{last_name}"
+        puts "Enter officer's full name"
+        name = gets.chomp 
 
         of = Officer.find_by(name: name)
-
-        of_reports = Report.all.each do |report|
-            report.officer == of  
+        
+        of_reports = []
+        Report.all.each do |report|
+            if report.officer == of  
+                of_reports << report
+            end
         end 
 
         puts " "
@@ -159,6 +162,8 @@ class Controller
             puts "#{report.report} by #{report.user.name} on #{report.date}"
             puts "____________________________________________________"
         end 
+        puts " "
+        puts " "
         
     end 
 

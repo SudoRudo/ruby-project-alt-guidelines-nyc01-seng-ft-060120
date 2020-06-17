@@ -18,10 +18,16 @@ Officer.create(name: "Matthew Abad", badge_number: 476000, precinct_id: 1)
 Officer.create(name: "Erika Accero", badge_number: 458000, precinct_id: 2)
 Officer.create(name: "Thomas Adams", badge_number: 430300, precinct_id: 3)
 
-User.create(name: Rudy)
+rudy = User.create(name: "Rudy")
+stephen = User.create(name: "Stephen")
+sophie = User.create(name: "Sophie")
 
-Report.create(title: "Bad Encounter", date: "August 5th", officer_id: 1, user_id: 1, report: "I had a bad encounter with officer Delano.")
-Report.create(title: "Good Encounter", date: "September 9th", officer_id: 3, user_id: nil, report: "I had a good encounter with officer Accero.")
+rudy.create_report("Bad Encounter", "August 5th", "Aaron Delano", "I had a bad encounter with officer Delano.")
+stephen.create_report("Okay Encounter", "February 35th", "Aaron Delano", "I had an okay encounter with officer Delano.")
+rudy.create_report("Good Encounter", "August 5th", "Erika Accero", "I had a good encounter with officer Accero.")
+
+# Report.create(title: "Bad Encounter", date: "August 5th", officer_id: 1, user_id: 1, report: "I had a bad encounter with officer Delano.")
+# Report.create(title: "Good Encounter", date: "September 9th", officer_id: 3, user_id: 1, report: "I had a good encounter with officer Accero.")
 
 
 
