@@ -72,7 +72,8 @@ class Controller
 
         puts "Thank you, your report has been submitted. Your submission ID is #{report_instance.id}." 
         prompt.select("If you need more information on police misconduct and accountability please check out our resources below.") do |menu|
-            menu.choice "Resources on Police Misconduct", -> { Resources.links }  
+            menu.choice "Resources on Police Misconduct", -> { Resources.links }
+            menu.choice "Main Menu", -> {self.welcome}  
             menu.choice "Exit", -> {  }
         end
     end
@@ -98,7 +99,8 @@ class Controller
 
         puts "Thank you, your report has been submitted. Your submission ID is #{past_report.id}." 
         prompt.select("If you need more information on police misconduct and accountability please check out our resources below.") do |menu|
-            menu.choice "Resources on Police Misconduct", -> { Resources.links }  
+            menu.choice "Resources on Police Misconduct", -> { Resources.links }
+            menu.choice "Main Menu", -> {self.welcome}  
             menu.choice "Exit", -> {  }
         end
     end
@@ -137,7 +139,11 @@ class Controller
         end 
         puts " "
         puts " "
-        
+        prompt.select("If you need more information on police misconduct and accountability please check out our resources below.") do |menu|
+            menu.choice "Resources on Police Misconduct", -> { Resources.links }
+            menu.choice "Main Menu", -> {self.welcome}  
+            menu.choice "Exit", -> {  }
+        end
     end 
 
     def officer_by_name
@@ -164,6 +170,11 @@ class Controller
         end 
         puts " "
         puts " "
+        prompt.select("If you need more information on police misconduct and accountability please check out our resources below.") do |menu|
+            menu.choice "Resources on Police Misconduct", -> { Resources.links }
+            menu.choice "Main Menu", -> {self.welcome}  
+            menu.choice "Exit", -> {  }
+        end
         
     end 
     def find_precinct 
@@ -181,8 +192,14 @@ class Controller
         puts "Here is the information for #{pf}"
         puts " "
         puts "#{pf.name} located in #{pf.location}"
-        puts "____________________________________________________"     
+        puts "____________________________________________________"    
+        puts " "
+        puts " "
+        prompt.select("If you need more information on police misconduct and accountability please check out our resources below.") do |menu|
+            menu.choice "Resources on Police Misconduct", -> { Resources.links }
+            menu.choice "Main Menu", -> {self.welcome}  
+            menu.choice "Exit", -> {  }
+        end
     end 
-
 
 end
