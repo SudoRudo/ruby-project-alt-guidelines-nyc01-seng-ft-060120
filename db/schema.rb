@@ -10,6 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 3) do
+
+  create_table "officers", force: :cascade do |t|
+    t.string "name"
+    t.integer "badge_number"
+    t.integer "precinct_id"
+  end
+
+  create_table "precincts", force: :cascade do |t|
+    t.string "name"
+    t.string "location"
+  end
+
+  create_table "reports", force: :cascade do |t|
+    t.string "title"
+    t.string "date"
+    t.integer "officer_id"
+    t.integer "user_id"
+    t.text "report"
+  end
 
 end
