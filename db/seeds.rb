@@ -2,7 +2,7 @@
 
 Precinct.create(
     name: "52nd Police precinct" , 
-    location:  "3016 Webster Ave, The Bronx, NY 10467"
+    location: "3016 Webster Ave, The Bronx, NY 10467"
     )
 Precinct.create(
     name: "50th Police precinct" , 
@@ -18,10 +18,10 @@ Officer.create(name: "Matthew Abad", badge_number: 476000, precinct_id: 1)
 Officer.create(name: "Erika Accero", badge_number: 458000, precinct_id: 2)
 Officer.create(name: "Thomas Adams", badge_number: 430300, precinct_id: 3)
 
+User.create(name: Rudy)
 
-
-
-
+Report.create(title: "Bad Encounter", date: "August 5th", officer_id: 1, user_id: 1, report: "I had a bad encounter with officer Delano.")
+Report.create(title: "Good Encounter", date: "September 9th", officer_id: 3, user_id: nil, report: "I had a good encounter with officer Accero.")
 
 
 

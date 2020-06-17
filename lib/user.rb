@@ -12,5 +12,21 @@ class User < ActiveRecord::Base
         Report.find(id)
     end
 
+    def find_past_reports
+        submissions = Report.all.each do |report|
+            report.user == self.name
+        end
+
+        puts "These are all the reports associated with this user"
+        puts " "
+        submissions.each do |submission|
+            puts "#{submission.id}) re: Officer #{submission.officer.name}:"
+            puts "\"#{submission.report}\""
+            puts "#{submission.date}"
+            puts "================================="
+        end
+        puts " "
+    end
+
     
 end

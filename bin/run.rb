@@ -4,4 +4,10 @@ control = Controller.new()
 control.user = User.create()
 control.main_menu
 
-puts "hello world"
+puts "goodbye world"
+puts " "
+puts " "
+puts " "
+puts "=========================================== "
+
+
