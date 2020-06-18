@@ -162,6 +162,8 @@ class Controller
 
         puts " "
         puts " "
+        puts "Officer #{of.name} works in the #{of.precinct.name}"
+        puts " "
         puts "These are the user reports relating to officer #{of.name}"
         of_reports.each do |report|
             puts " "
